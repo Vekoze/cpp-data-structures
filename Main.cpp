@@ -5,6 +5,7 @@ int main() {
 
 	// LinkedList
 	LinkedList<int> ll;
+	std::cout << "empty:" << std::boolalpha << ll.IsEmpty() << '\n';
 	ll.PushBack(3);
 	ll.PushBack(4);
 	ll.PushBack(5);
@@ -13,5 +14,6 @@ int main() {
 	std::cout << ll << '\n';
 	std::cout << "pop: " << ll.Pop() << '\n';
 	std::cout << ll << '\n';
+
 	return 0;
 }
