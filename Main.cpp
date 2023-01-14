@@ -14,6 +14,7 @@ int main() {
 	std::cout << ll << '\n';
 	std::cout << "pop: " << ll.Pop() << '\n';
 	std::cout << ll << '\n';
+	std::cout << "size:" << ll.Size() << '\n';
 
 	return 0;
 }
