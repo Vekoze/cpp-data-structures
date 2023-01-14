@@ -6,6 +6,7 @@ template<class T>
 class Node {
 public:
 	Node(T value) : value_(value), next_(nullptr) {};
+	~Node() { delete next_; }
 	T Value() const { return value_; };
 	Node*& Next() { return next_; }
 private:
@@ -17,6 +18,15 @@ template<class T>
 class LinkedList {
 public:
 	LinkedList() : head_(nullptr), tail_(nullptr), size_(0) {};
+
+	~LinkedList() {
+		Node<T>* current = head_;
+		while (current != nullptr) {
+			Node<T>* temp = current;
+			current = current->Next();
+			delete temp;
+		}
+	}
 
 	bool IsEmpty() const { return head_ == nullptr; }
 
