@@ -6,7 +6,6 @@ template<class T>
 class Node {
 public:
 	Node(T value) : value_(value), next_(nullptr) {};
-	~Node() { delete next_; }
 	T Value() const { return value_; };
 	Node*& Next() { return next_; }
 private:
