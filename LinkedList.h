@@ -17,7 +17,11 @@ template<class T>
 class LinkedList {
 public:
 	LinkedList() : head_(nullptr), tail_(nullptr), size_(0) {};
+
 	bool IsEmpty() const { return head_ == nullptr; }
+
+	int Size() const { return size_; }
+
 	void PushBack(T value) {
 		Node<T>* node = new Node(value);
 		if (IsEmpty()) {
@@ -28,12 +32,16 @@ public:
 			tail_->Next() = node;
 			tail_ = node;
 		}
+		size_++;
 	}
+
 	void PushFront(T value) {
 		Node<T>* node = new Node(value);
 		node->Next() = head_;
 		head_ = node;
+		size_++;
 	}
+
 	T Pop() {
 		if (head_ == nullptr) {
 			throw std::out_of_range("LinkedList is empty.");
@@ -46,9 +54,12 @@ public:
 		delete tail_;
 		tail_ = prev;
 		tail_->Next() = nullptr;
+		size_--;
 		return value;
 	}
+
 	friend std::ostream& operator<<(std::ostream& os, const LinkedList& ll) {
+		os << "-----" << '\n';
 		os << "LinkedList: " << '\n';
 		if (ll.head_ == nullptr) {
 			os << "Empty" << '\n';
@@ -59,7 +70,8 @@ public:
 			os << current->Value() << " -> ";
 			current = current->Next();
 		}
-		os << "null";
+		os << "null" << '\n';
+		os << "-----";
 		return os;
 	}
 
