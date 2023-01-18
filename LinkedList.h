@@ -5,6 +5,8 @@
 template<class T>
 class Node {
 public:
+	Node() = delete;
+	Node(const Node& node) = delete;
 	Node(T value) : value_(value), next_(nullptr) {};
 	T Value() const { return value_; };
 	Node*& Next() { return next_; }
@@ -17,7 +19,7 @@ template<class T>
 class LinkedList {
 public:
 	LinkedList() : head_(nullptr), tail_(nullptr), size_(0) {};
-
+	LinkedList(const LinkedList<T>& ll) = delete;
 	~LinkedList() {
 		Node<T>* current = head_;
 		while (current != nullptr) {
